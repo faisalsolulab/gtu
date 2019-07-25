@@ -1,9 +1,11 @@
 import {createStackNavigator, createSwitchNavigator, createAppContainer} from 'react-navigation';
 import Home from './Home';
 import Auth from '../Auth/AuthNavigator';
+import MaterialList from '../MainScreens/MaterialList';
 
 const MainNavigator = createStackNavigator({
-  Home:Home
+  Home:Home,
+  MaterialList:MaterialList,
 }, {
   headerMode:'none'
 }
