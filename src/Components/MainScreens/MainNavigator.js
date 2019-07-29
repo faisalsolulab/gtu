@@ -2,10 +2,12 @@ import {createStackNavigator, createSwitchNavigator, createAppContainer} from 'r
 import Home from './Home';
 import Auth from '../Auth/AuthNavigator';
 import MaterialList from '../MainScreens/MaterialList';
+import Description from './Description';
 
 const MainNavigator = createStackNavigator({
   Home:Home,
   MaterialList:MaterialList,
+  Description:Description,
 }, {
   headerMode:'none'
 }

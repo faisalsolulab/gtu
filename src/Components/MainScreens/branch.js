@@ -63,7 +63,7 @@ export default class Branch extends React.Component{
     return(
       <View style={{flex:1}}>
           <View style={{justifyContent:'center',flex:1}}>
-                  <Text style={{fontSize:20, fontWeight:'bold', marginTop:'2%'}}>Select Branch</Text>
+                  <Text style={{fontSize:20, fontWeight:'bold', marginTop:'2%', color:'black'}}>Select Branch</Text>
           </View>
           <View style={{flex:9}}>
               <FlatList
@@ -74,7 +74,7 @@ export default class Branch extends React.Component{
                                 <TouchableOpacity style={{flexDirection:'row', alignItems:'center'}}
                                 onPress={() => this.props.navigation.navigate('MaterialList')}>
                                   <Image source={{uri:item.image}} style={styles.logoStyle}/>
-                                  <Text style={{fontSize:18, fontWeight:'bold'}}>{item.data}</Text>
+                                  <Text style={{fontSize:18, fontWeight:'bold', color:'black'}}>{item.data}</Text>
                                 </TouchableOpacity>
                               </Card>
                             )

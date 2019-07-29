@@ -16,5 +16,6 @@ export default class Header extends React.Component{
 const styles = StyleSheet.create({
   logoText:{
     fontSize:18,
+    color:'black'
   },
 })

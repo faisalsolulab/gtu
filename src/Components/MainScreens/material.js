@@ -30,7 +30,7 @@ export default class Material extends React.Component{
     return(
       <View style={{flex:1}}>
         <View style={{justifyContent:'center', marginBottom:'4%', flex:1}}>
-                <Text style={{fontSize:20, fontWeight:'bold'}}>Latest Materials</Text>
+                <Text style={{fontSize:20, fontWeight:'bold', color:'black'}}>Latest Materials</Text>
         </View>
         <View style={{flex:9}}>
               <FlatList
