@@ -63,7 +63,7 @@ export default class Branch extends React.Component{
     return(
       <View style={{flex:1}}>
           <View style={{justifyContent:'center',flex:1}}>
-                  <Text style={{fontSize:20, fontWeight:'bold', marginTop:'2%', color:'black'}}>Select Branch</Text>
+                  <Text style={{fontSize:20, fontWeight:'bold', marginTop:'2%', color:'black', marginLeft:'2%'}}>Select Branch</Text>
           </View>
           <View style={{flex:9}}>
               <FlatList

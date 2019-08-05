@@ -6,18 +6,27 @@ import {
   StatusBar ,
   Image,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  Alert
 } from 'react-native';
+import {connect} from 'react-redux';
+import {loginUser} from '../../Actions/';
 
-
-
-export default class Login extends Component {
+class Login extends Component {
 
   constructor(props){
     super(props)
     this.state = {
       Email:"",
       Password:'',
+    }
+  }
+
+  submit = () => {
+    if(this.state.Email && this.state.Password){
+      this.props.loginUser(this.state.Email, this.state.Password)
+    }else{
+      Alert.alert('Enter Credentials');
     }
   }
 
@@ -42,7 +51,7 @@ export default class Login extends Component {
               placeholderTextColor = "grey"
               onChangeText = {(text) => this.setState({Password:text})}
               />  
-           <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('MainNavigator')}>
+           <TouchableOpacity style={styles.button} onPress={() => this.submit()}>
              <Text style={styles.buttonText}>Login</Text>
            </TouchableOpacity>   
         </View>  
@@ -120,3 +129,5 @@ const styles = StyleSheet.create({
     textAlign:'center'
   }
 });
+
+export default connect(null, {loginUser})(Login);

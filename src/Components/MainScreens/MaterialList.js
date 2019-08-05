@@ -28,21 +28,20 @@ export default class MaterialList extends React.Component{
           title:'Maths 3',
           subjectCode:'2435637',
           price:"Rs.230"
-        },
-        
+        }
     ]
     }
   }
   render(){
     return(
       <View style={{flex:1}}>
-          <Header/>
-        <View style={{flex:1, marginBottom:'2%'}}>
+          <Header navigation={this.props.navigation}/>
+        <View style={{flex:1, paddingBottom:'2%'}}>
           <FlatList
              data={this.state.branchData}
              renderItem = {({item}) => {
               return(
-                <Card containerStyle={{flex:1, padding:0, paddingBottom:10}}>
+                <Card containerStyle={{flex:1, padding:0, paddingBottom:10, marginBottom:'5%', borderRadius:20}}>
                   <TouchableOpacity 
                   onPress={() => this.props.navigation.navigate('MaterialList')}>
                     <Image source={{uri:item.image}} style={styles.logoStyle} resizeMode='cover'/>
@@ -75,8 +74,7 @@ const styles = StyleSheet.create({
   logoStyle:{
     height:120,
     width:'100%',
-    borderBottomLeftRadius:25,
-    borderBottomRightRadius:25
+    borderRadius:20
   },
   cartStyle:{
     height:20,

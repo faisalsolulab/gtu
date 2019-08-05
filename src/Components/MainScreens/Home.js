@@ -9,7 +9,7 @@ class Home extends React.Component{
   render(){
     return(
       <View style={{flex:1}}>
-         <Header/>
+         <Header navigation={this.props.navigation}/>
         <ScrollView style={{flexGrow:1, margin:'1%', marginBottom:'3%'}} showsVerticalScrollIndicator={false}>
             {/* <View style={{flex:3}}>
                   <SliderCarousel/>

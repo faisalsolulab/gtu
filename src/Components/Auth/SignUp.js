@@ -1,7 +1,9 @@
 import React from 'react';
-import {Text, View, TextInput, StyleSheet,Image, TouchableOpacity} from 'react-native';
+import {Text, View, TextInput, StyleSheet,Image, TouchableOpacity, Alert, ActivityIndicator} from 'react-native';
 import {widthPercentageToDP as Width, heightPercentageToDP as Height} from 'react-native-responsive-screen';
 import {Button} from 'react-native-elements';
+import {connect} from 'react-redux';
+import {registerUser} from '../../Actions';
 
 class SignUp extends React.Component{
 
@@ -16,7 +18,20 @@ class SignUp extends React.Component{
     }
   }
 
+  submit = () => {
+    console.log('BHH');
+    
+    if(this.state.fullName && this.state.MobileNo && this.state.Email && this.state.Password && this.state.ConfirmPassword){
+      this.props.registerUser(this.state.fullName, this.state.MobileNo, this.state.Email, this.state.Password)
+    }else{
+      return(
+        Alert.alert('Please enter all fields')
+      )
+    }
+  }
+
   render(){
+    console.log('PROPS', this.props)
     return(
         <View style={styles.container}>
             <View style={styles.logo}>
@@ -55,8 +70,11 @@ class SignUp extends React.Component{
                     secureTextEntry={true}
                     onChangeText={(text) => this.setState({ConfirmPassword:text})}
                     />
-                <TouchableOpacity style={styles.button}>
-                  <Text style={styles.buttonText}>Sign Up</Text>
+                <TouchableOpacity style={styles.button} onPress = {() => this.submit()}>
+                  {this.props.registerData.registerData ? 
+                  <ActivityIndicator/>
+                  :<Text style={styles.buttonText}>Sign Up</Text>
+                  }
                 </TouchableOpacity>   
              </View>  
 				<View style={styles.signupTextCont}>
@@ -155,4 +173,10 @@ const styles = StyleSheet.create({
     textAlign:'center'
   }
 })
-export default SignUp;
+
+const mapStateToProps = ({main}) => {
+  const registerData = main;
+  return {registerData}
+}
+
+export default connect(mapStateToProps, {registerUser})(SignUp);

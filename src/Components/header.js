@@ -1,14 +1,19 @@
 import React from 'react';
 import {Text, View, FlatList, Image, TouchableOpacity, StyleSheet} from 'react-native';
+import {Icon} from 'react-native-elements';
 
 export default class Header extends React.Component{
   render(){
+    console.log('HEasre', this.props)
     return(
-     <View style={{height:'7%', justifyContent:'center', borderBottomWidth:1}}>
-          <View style={{alignItems:'center'}}>
+     <View style={{height:'8%', borderBottomWidth:1, flexDirection:'row', alignItems:'center'}}>
+        <View style={{flexDirection:'row'}}>
+          <Icon name='menu' containerStyle={{marginLeft:'2%'}} onPress={() => this.props.navigation.openDrawer()}/>
+          <View style={{marginLeft:'30%'}}>
           <Text style={styles.logoText}>Engineering <Text style={{color:'blue', fontSize:22, fontStyle:'italic'}}>Z</Text><Text style={{fontSize:18}}>one</Text></Text>	
           </View>
-          </View>
+        </View>
+    </View>
     )
   }
 }
@@ -16,6 +21,6 @@ export default class Header extends React.Component{
 const styles = StyleSheet.create({
   logoText:{
     fontSize:18,
-    color:'black'
+    color:'black',
   },
 })

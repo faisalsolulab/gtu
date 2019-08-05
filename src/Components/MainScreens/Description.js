@@ -7,7 +7,7 @@ class Description extends React.Component{
   render(){
     return(
       <View style={{flex:1}}>
-        <Header/>
+        <Header navigation={this.props.navigation}/>
         <View style={{flex:1}}>
             <Image source={{uri:'https://i.imgur.com/2nCt3Sbl.jpg'}} style={styles.coverImage} resizeMode='cover'/>
             <View style={{flex:1}}>
@@ -21,7 +21,7 @@ class Description extends React.Component{
               </ScrollView>
               <View style={styles.bottomTab}>
                 <Text style={{color:'white', fontSize:20, marginLeft:'5%'}}>Price: Rs.200</Text>
-                <TouchableOpacity style={{marginLeft:'40%'}}>
+                <TouchableOpacity style={{marginLeft:'40%'}} onPress={() => this.props.navigation.navigate('paytm')}>
                 <Text style={{color:'white', fontSize:20, }}>Buy Now</Text>
                 </TouchableOpacity>
               </View>
