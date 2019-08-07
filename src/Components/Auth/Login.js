@@ -17,14 +17,14 @@ class Login extends Component {
   constructor(props){
     super(props)
     this.state = {
-      Email:"",
-      Password:'',
+      Email:"abc@gmail.com",
+      Password:'xyz',
     }
   }
 
   submit = () => {
     if(this.state.Email && this.state.Password){
-      this.props.loginUser(this.state.Email, this.state.Password)
+      this.props.loginUser(this.state.Email, this.state.Password, this.props.navigation)
     }else{
       Alert.alert('Enter Credentials');
     }

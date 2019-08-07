@@ -1,6 +1,9 @@
 import React from 'react';
 import {Text, View, FlatList, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import {Card} from 'react-native-elements';
+import axios from 'axios';
+
+const URL = 'http://www.codeingking.com/engineeringzone/api/';
 
 export default class Branch extends React.Component{
   constructor(props){
@@ -59,6 +62,15 @@ export default class Branch extends React.Component{
     ]
     }
   }
+
+  componentDidMount(){
+    axios(`${URL}branch/getAllBranch`, {
+      method:'POST',
+    }).then((res) => {
+      console.log('Branchss', res)
+    })
+  }
+
   render(){
     return(
       <View style={{flex:1}}>
