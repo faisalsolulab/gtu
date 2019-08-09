@@ -19,7 +19,7 @@ class Home extends React.Component{
               <Material navigation={this.props.navigation}/>
             </View>
             <View style={{flex:7}}>
-                  <Branch navigation={this.props.navigation}/>
+              <Branch navigation={this.props.navigation}/>
             </View>
             </View>
     </ScrollView>

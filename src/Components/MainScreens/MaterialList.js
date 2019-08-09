@@ -1,57 +1,58 @@
 import React from 'react';
-import {Text, View, FlatList, Image, TouchableOpacity, StyleSheet} from 'react-native';
+import {Text, View, FlatList, Image, TouchableOpacity, StyleSheet, ActivityIndicator} from 'react-native';
 import Header from '../header';
 import {Card} from 'react-native-elements';
+import axios from 'axios';
+
+const URL = 'http://www.codeingking.com/engineeringzone/api/';
 
 export default class MaterialList extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-    branchData:[
-        {
-          id:'1',
-          image:'https://i.imgur.com/2nCt3Sbl.jpg',
-          title:'Maths 1',
-          subjectCode:'2435637',
-          price:"Rs.200"
-        },
-        {
-          id:'2',
-          image:'https://i.imgur.com/lceHsT6l.jpg',
-          title:'Maths 2',
-          subjectCode:'2435637',
-          price:"Rs.250"
-        },
-        {
-          id:'3',
-          image:'https://i.imgur.com/UYiroysl.jpg',
-          title:'Maths 3',
-          subjectCode:'2435637',
-          price:"Rs.230"
-        }
-    ]
+    materialData:''
     }
   }
+
+  componentDidMount(){
+    axios(`${URL}material/getAllMaterial`, {
+      method:'GET',
+    }).then((res) => {
+      console.log('Material List', res.data)
+      this.setState({materialData:res.data})
+    })
+  }
+
   render(){
-    return(
+    console.log('PROPS', this.props.navigation.state.params.branchId)
+      if(this.state.materialData){
+        return(
       <View style={{flex:1}}>
           <Header navigation={this.props.navigation}/>
         <View style={{flex:1, paddingBottom:'2%'}}>
           <FlatList
-             data={this.state.branchData}
+             data={this.state.materialData}
              renderItem = {({item}) => {
+               if(item.branch_id === this.props.navigation.state.params.branchId){
               return(
                 <Card containerStyle={{flex:1, padding:0, paddingBottom:10, marginBottom:'5%', borderRadius:20}}>
                   <TouchableOpacity 
                   onPress={() => this.props.navigation.navigate('MaterialList')}>
                     <Image source={{uri:item.image}} style={styles.logoStyle} resizeMode='cover'/>
-                    <View style={{flexDirection:'row', marginTop:'2%', marginBottom:'1.5%'}}>
-                      <Text style={{fontSize:16, fontWeight:'bold', marginRight:"15%", marginLeft:'5%'}}>Subject: {item.title}</Text>
-                      <Text style={{fontSize:16, fontWeight:'bold'}}>Subject Code: {item.subjectCode}</Text>
+                    <View style={{marginTop:'2%', marginBottom:'1.5%'}}>
+                      <Text style={{fontSize:16, fontWeight:'bold',marginLeft:'5%'}}>Subject: <Text style={{color:'black'}}>{item.subject_name}</Text></Text>
+                      <Text style={{fontSize:16, fontWeight:'bold', marginLeft:'5%'}}>Subject Code: <Text style={{color:'black'}}>{item.title}</Text></Text>
                     </View>
                     <View style={{flexDirection:'row'}}>
-                      <Text style={{fontSize:16, fontWeight:'bold',marginRight:"15%", marginLeft:'5%', color:'green'}}>Price: {item.price}</Text>
-                      <TouchableOpacity style={{flexDirection:'row'}} onPress={() => this.props.navigation.navigate('Description')}>
+                      <Text style={{fontSize:16, fontWeight:'bold',marginRight:"15%", marginLeft:'5%', color:'green'}}>Price: ₹{item.discount_price}</Text>
+                      <TouchableOpacity style={{flexDirection:'row'}} onPress={() => this.props.navigation.navigate('Description', {
+                        description:item.description,
+                        image:item.image,
+                        semesterId:item.semester_id,
+                        price:item.discount_price,
+                        name:item.subject_name,
+                        subjectCode:item.title
+                      })}>
                         <Image source={require('../../assets/cart.png')} resizeMode='contain' style={styles.cartStyle}/>
                         <Text style={{fontSize:16, fontWeight:'bold', color:"green"}}>Buy Now</Text>
                       </TouchableOpacity>
@@ -59,15 +60,23 @@ export default class MaterialList extends React.Component{
                   </TouchableOpacity>
                 </Card>
               )
+               }}
         }
-        }
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item) => item.book_id}
         showsVerticalScrollIndicator={false}
           />
         </View>
       </View>
+      
+    )
+  } else{
+    return(
+      <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+        <ActivityIndicator style={{alignSelf:'center'}}/>
+      </View>
     )
   }
+}
 }
 
 const styles = StyleSheet.create({

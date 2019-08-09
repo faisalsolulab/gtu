@@ -67,7 +67,8 @@ export default class Branch extends React.Component{
     axios(`${URL}branch/getAllBranch`, {
       method:'POST',
     }).then((res) => {
-      console.log('Branchss', res)
+      console.log('Branchss', res.data)
+      this.setState({branchData:res.data})
     })
   }
 
@@ -84,9 +85,9 @@ export default class Branch extends React.Component{
                             return(
                               <Card>
                                 <TouchableOpacity style={{flexDirection:'row', alignItems:'center'}}
-                                onPress={() => this.props.navigation.navigate('MaterialList')}>
+                                onPress={() => this.props.navigation.navigate('MaterialList', {branchId:item.id})}>
                                   <Image source={{uri:item.image}} style={styles.logoStyle}/>
-                                  <Text style={{fontSize:18, fontWeight:'bold', color:'black'}}>{item.data}</Text>
+                                  <Text style={{fontSize:18, fontWeight:'bold', color:'black'}}>{item.name}</Text>
                                 </TouchableOpacity>
                               </Card>
                             )

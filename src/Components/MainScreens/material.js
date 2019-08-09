@@ -1,5 +1,8 @@
 import React from 'react';
 import {Text, View, FlatList, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import axios from 'axios';
+
+const URL = 'http://www.codeingking.com/engineeringzone/api/';
 
 export default class Material extends React.Component{
   constructor(props){
@@ -24,6 +27,14 @@ export default class Material extends React.Component{
         }
       ],
     }
+  }
+
+  componentDidMount(){
+    axios(`${URL}branch/getAllBranch`, {
+      method:'POST',
+    }).then((res) => {
+      console.log('Branchss', res)
+    })
   }
 
   render(){
