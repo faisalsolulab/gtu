@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const URL = 'http://www.codeingking.com/engineeringzone/api/';
 
-export default class MaterialList extends React.Component{
+export default class MyPurchase extends React.Component{
   constructor(props){
     super(props)
     this.state = {
@@ -24,7 +24,6 @@ export default class MaterialList extends React.Component{
   }
 
   render(){
-    console.log('PROPS', this.props.navigation.state.params.branchId)
       if(this.state.materialData){
         return(
       <View style={{flex:1}}>
@@ -33,36 +32,21 @@ export default class MaterialList extends React.Component{
           <FlatList
              data={this.state.materialData}
              renderItem = {({item}) => {
-               if(item.branch_id === this.props.navigation.state.params.branchId){
               return(
                 <Card containerStyle={{flex:1, padding:0, paddingBottom:10, marginBottom:'5%', borderRadius:20}}>
-                  <TouchableOpacity 
-                  onPress={() => this.props.navigation.navigate('MaterialList')}>
                     <Image source={{uri:item.image}} style={styles.logoStyle} resizeMode='cover'/>
                     <View style={{marginTop:'2%', marginBottom:'1.5%'}}>
                       <Text style={{fontSize:16, fontWeight:'bold',marginLeft:'5%'}}>Subject: <Text style={{color:'black'}}>{item.subject_name}</Text></Text>
-                      <Text style={{fontSize:16, fontWeight:'bold', marginLeft:'5%'}}>Subject Code: <Text style={{color:'black'}}>{item.title}</Text></Text>
                     </View>
-                    <View style={{flexDirection:'row'}}>
-                      <Text style={{fontSize:16, fontWeight:'bold',marginRight:"15%", marginLeft:'5%', color:'green'}}>Price: ₹{item.discount_price}</Text>
-                      <TouchableOpacity style={{flexDirection:'row'}} onPress={() => this.props.navigation.navigate('Description', {
-                        bookId:item.book_id,
-                        description:item.description,
-                        image:item.image,
-                        semesterName:item.semester_name,
-                        price:item.discount_price,
-                        name:item.subject_name,
-                        subjectCode:item.title
-                      })}>
-                        <Image source={require('../../assets/cart.png')} resizeMode='contain' style={styles.cartStyle}/>
-                        <Text style={{fontSize:16, fontWeight:'bold', color:"green"}}>Buy Now</Text>
+                    <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
+                    <Text style={{fontSize:16, fontWeight:'bold', marginLeft:'5%'}}>Subject Code: <Text style={{color:'black'}}>{item.title}</Text></Text>
+                      <TouchableOpacity style={{marginLeft:'auto', marginRight:'2%', height:'120%', width:'25%', backgroundColor:'green', borderRadius:15}} onPress={() => this.props.navigation.navigate('pdf')}>
+                        <Text style={{fontSize:16, fontWeight:'bold', color:"white", textAlign:'center'}}>Read Now</Text>
                       </TouchableOpacity>
                     </View>
-                  </TouchableOpacity>
                 </Card>
               )
                }}
-        }
         keyExtractor={(item) => item.book_id}
         showsVerticalScrollIndicator={false}
           />

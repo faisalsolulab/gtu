@@ -8,8 +8,9 @@ export default class Header extends React.Component{
     return(
      <View style={{height:'8%', borderBottomWidth:1, flexDirection:'row', alignItems:'center'}}>
         <View style={{flexDirection:'row'}}>
-          <Icon name='menu' containerStyle={{marginLeft:'2%'}} onPress={() => this.props.navigation.openDrawer()}/>
-          <View style={{marginLeft:'30%'}}>
+          {this.props.routeName == 'Paytm' ? null :
+          <Icon name='menu' containerStyle={{marginLeft:'2%'}} onPress={() => this.props.navigation.openDrawer()}/>}
+          <View style={{marginLeft: this.props.routeName == 'Paytm' ? '40%' : '30%'}}>
           <Text style={styles.logoText}>Engineering <Text style={{color:'blue', fontSize:22, fontStyle:'italic'}}>Z</Text><Text style={{fontSize:18}}>one</Text></Text>	
           </View>
         </View>

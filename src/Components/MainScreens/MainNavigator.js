@@ -8,11 +8,15 @@ import Description from './Description';
 import DrawerMenu from './drawerMenu';
 import Addmoney from './paytm';
 import AsyncStorage from '@react-native-community/async-storage';
+import MyPurchase from './myPurchase';
+import pdf from './pdf';
 
 const MainNavigator = createStackNavigator({
   Home:Home,
   MaterialList:MaterialList,
   Description:Description,
+  MyPurchase:MyPurchase,
+  pdf:pdf,
   paytm:Addmoney
 }, {
   headerMode:'none'
@@ -36,8 +40,6 @@ const DrawerNavigator = createAppContainer(Drawer);
 const SNavigator = createSwitchNavigator({
   Auth: Auth,
   MainNavigator:DrawerNavigator,
-}, {
-  initialRouteName:AsyncStorage.getItem('Login') ? 'Auth' : 'Auth'
 })
 
 const SwitchNavigator = createAppContainer(SNavigator)

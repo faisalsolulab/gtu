@@ -7,11 +7,14 @@ const URL = "http://www.codeingking.com/engineeringzone/api/";
 
 export const loginUser = (email, password, navigation) => {
   console.log("LO", email, password);
-  storeData = async () => {
+  storeData = async (res) => {
     try {
       await AsyncStorage.setItem('Login', 'Login')
-      await AsyncStorage.getItem('Login').then((value)  => console.log('LOGIN ASYNC', value))
-    } catch (e) {
+      await AsyncStorage.setItem('LoginData', `${res.email}, ${res.fname}, ${res.mobileno}`)
+      const value =  await AsyncStorage.getItem('Login')
+      const loginData = await AsyncStorage.getItem('LoginData')
+      console.log('ASYNS ASS', value, loginData)
+      } catch (e) {
       console.log('ASYN ERROR', e)
     }
   }
@@ -31,7 +34,7 @@ export const loginUser = (email, password, navigation) => {
         Alert.alert('Invalid Email or Password')
       }
       if(response.data.status == 200){
-        this.storeData();
+        this.storeData(response.data);
         navigation.navigate('Home')
       }
     })

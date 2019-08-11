@@ -14,7 +14,7 @@ class Description extends React.Component{
         <View style={{flex:1}}>
             <Image source={{uri:this.props.navigation.state.params.image}} style={styles.coverImage} resizeMode='cover'/>
             <View style={{flex:1}}>
-              <Text style={{fontSize:25, color:'black', flex:0.3, marginLeft:'3%', marginTop:'2%'}}>Maths 1 {`(Sem-${this.props.navigation.state.params.semesterId})`}</Text>
+              <Text style={{fontSize:25, color:'black', flex:0.3, marginLeft:'3%', marginTop:'2%'}}>Maths 1 {`(Sem-${this.props.navigation.state.params.semesterName})`}</Text>
               <Text style={{fontSize:15, marginLeft:'3%', flex:0.3}}>Subject Code: {this.props.navigation.state.params.subjectCode}</Text>
               <Text style={{fontSize:20, color:'black', flex:0.3,  marginLeft:'3%'}}>Description</Text>
               <ScrollView>
@@ -24,7 +24,9 @@ class Description extends React.Component{
               </ScrollView>
               <View style={styles.bottomTab}>
                 <Text style={{color:'white', fontSize:20, marginLeft:'5%'}}>Price: ₹{this.props.navigation.state.params.price}</Text>
-                <TouchableOpacity style={{marginLeft:'40%'}} onPress={() => this.props.navigation.navigate('paytm')}>
+                <TouchableOpacity style={{marginLeft:'40%'}} onPress={() => this.props.navigation.navigate('paytm', { 
+                  price : this.props.navigation.state.params.price,
+                  bookId: this.props.navigation.state.params.bookId})}>
                 <Text style={{color:'white', fontSize:20, }}>Buy Now</Text>
                 </TouchableOpacity>
               </View>

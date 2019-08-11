@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableWithoutFeedback, StyleSheet } from 'react-native';
 import {Icon} from 'react-native-elements';
+import AsyncStorage from '@react-native-community/async-storage';
 
 export default class DrawerMenu extends React.Component {
     render(){
@@ -16,13 +17,16 @@ export default class DrawerMenu extends React.Component {
                         <Text style={{color:'black', marginLeft:'2%', fontSize:20}}>Home</Text>
                    </View>
                </TouchableWithoutFeedback>
-               <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Home')}>
+               <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('MyPurchase')}>
                    <View style={styles.titleStyle}>
                         <Icon name='file-download' size={20} type={'material-community'}/>
                         <Text style={{color:'black', marginLeft:'2%', fontSize:20}}>My Purchases</Text>
                    </View>
                </TouchableWithoutFeedback>
-               <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Home')}>
+               <TouchableWithoutFeedback onPress={() => {
+                   AsyncStorage.removeItem('Login')
+                   this.props.navigation.navigate('Auth')
+                   }}>
                    <View style={styles.titleStyle}>
                         <Icon name='logout' size={20} type={'material-community'}/>
                         <Text style={{color:'black', marginLeft:'2%', fontSize:20}}>Sign Out</Text>

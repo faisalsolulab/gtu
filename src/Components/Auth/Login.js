@@ -7,10 +7,14 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
+  ActivityIndicator,
   Alert
 } from 'react-native';
 import {connect} from 'react-redux';
 import {loginUser} from '../../Actions/';
+import AsyncStorage from '@react-native-community/async-storage';
+
+var token;
 
 class Login extends Component {
 
@@ -22,6 +26,13 @@ class Login extends Component {
     }
   }
 
+  componentWillMount = async () => {
+   await AsyncStorage.getItem('Login').then((value) => {
+    token = value
+    token == 'Login' ? this.props.navigation.navigate('MainNavigator') : null
+  })
+  }
+
   submit = () => {
     if(this.state.Email && this.state.Password){
       this.props.loginUser(this.state.Email, this.state.Password, this.props.navigation)
@@ -29,7 +40,7 @@ class Login extends Component {
       Alert.alert('Enter Credentials');
     }
   }
-
+  
 	render() {
 		return(
 			<View style={styles.container}>
@@ -60,7 +71,7 @@ class Login extends Component {
 					<TouchableOpacity onPress={() => this.props.navigation.navigate('SignUpScreen')}><Text style={styles.signupButton}> Signup</Text></TouchableOpacity>
 				</View>
 			</View>	
-			)
+      ) 
 	}
 }
 const styles = StyleSheet.create({
