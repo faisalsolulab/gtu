@@ -1,11 +1,20 @@
 import { LOGIN_USER, REGISTER_USER } from "./types";
 import { Alert } from "react-native";
+import AsyncStorage from '@react-native-community/async-storage';
 import axios from "axios";
 
 const URL = "http://www.codeingking.com/engineeringzone/api/";
 
 export const loginUser = (email, password, navigation) => {
   console.log("LO", email, password);
+  storeData = async () => {
+    try {
+      await AsyncStorage.setItem('Login', 'Login')
+      await AsyncStorage.getItem('Login').then((value)  => console.log('LOGIN ASYNC', value))
+    } catch (e) {
+      console.log('ASYN ERROR', e)
+    }
+  }
   return dispatch => {
     axios(`${URL}login/loginCheck`, {
       method:'POST',
@@ -22,6 +31,7 @@ export const loginUser = (email, password, navigation) => {
         Alert.alert('Invalid Email or Password')
       }
       if(response.data.status == 200){
+        this.storeData();
         navigation.navigate('Home')
       }
     })

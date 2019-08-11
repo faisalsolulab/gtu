@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { TouchableHighlight, Alert, View, Text, StyleSheet, Dimensions, NativeModules,ActivityIndicator, DeviceEventEmitter, TextInput, NativeEventEmitter } from 'react-native';
 import paytm from 'react-native-paytm';
+import axios from 'axios';
 var {height, width} = Dimensions.get('window');
 
 
@@ -36,6 +37,23 @@ class Addmoney extends Component{
 
     }
     componentDidMount(){
+        axios('http://codeingking.com/engineeringzone/api/order/addOrder',{
+            method:'POST',
+            data:{
+                user_id:'123',
+                user_name:'Faisal',
+                material_id:'2',
+                invoice_date:'2019-05-25',
+                invoice_time:'22:13:12',
+                platform:'paytm',
+                receipt_number:'222',
+                paid_amount:'200',
+                discount:'20',
+                original_price:'200'
+            }
+        }).then(
+            (res) => console.log("PatM", res)
+        )
         paytmEvent = new NativeEventEmitter(NativeModules.RNPayTm);
         paytmEvent.addListener('PayTMResponse', this._handlePaytmResponse);
     }

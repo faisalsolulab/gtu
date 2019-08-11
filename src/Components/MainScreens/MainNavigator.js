@@ -7,6 +7,7 @@ import MaterialList from '../MainScreens/MaterialList';
 import Description from './Description';
 import DrawerMenu from './drawerMenu';
 import Addmoney from './paytm';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const MainNavigator = createStackNavigator({
   Home:Home,
@@ -35,6 +36,8 @@ const DrawerNavigator = createAppContainer(Drawer);
 const SNavigator = createSwitchNavigator({
   Auth: Auth,
   MainNavigator:DrawerNavigator,
+}, {
+  initialRouteName:AsyncStorage.getItem('Login') ? 'Auth' : 'Auth'
 })
 
 const SwitchNavigator = createAppContainer(SNavigator)
