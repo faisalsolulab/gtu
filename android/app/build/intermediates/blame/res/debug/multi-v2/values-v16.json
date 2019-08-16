@@ -1,10 +1,20 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/solulab/Documents/gtu/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
+            "outputFile": "/Users/faisal/WorkSpace/gtu/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "/Users/solulab/.gradle/caches/transforms-2/files-2.1/9f7a3363a836eb7b5ebf34f9ce654da0/res/values-v16/values-v16.xml",
+                    "source": "/Users/faisal/.gradle/caches/transforms-2/files-2.1/47d6d966689bbb4835747d53c9201cf8/res/values-v16/values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
+                    }
+                },
+                {
+                    "source": "/Users/faisal/.gradle/caches/transforms-2/files-2.1/f6559094cce65ea9996011efa030554b/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -20,16 +30,6 @@
                         "endLines": "6",
                         "endColumns": "12",
                         "endOffsets": "289"
-                    }
-                },
-                {
-                    "source": "/Users/solulab/.gradle/caches/transforms-2/files-2.1/d1606c6db797d9d090efa47940f767a1/res/values-v16/values-v16.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "65",
-                        "endOffsets": "116"
                     }
                 }
             ]

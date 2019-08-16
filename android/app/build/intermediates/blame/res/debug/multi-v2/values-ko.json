@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/solulab/Documents/gtu/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ko/values-ko.xml",
+            "outputFile": "/Users/faisal/WorkSpace/gtu/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ko/values-ko.xml",
             "map": [
                 {
-                    "source": "/Users/solulab/.gradle/caches/transforms-2/files-2.1/d1606c6db797d9d090efa47940f767a1/res/values-ko/values-ko.xml",
+                    "source": "/Users/faisal/.gradle/caches/transforms-2/files-2.1/47d6d966689bbb4835747d53c9201cf8/res/values-ko/values-ko.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/Users/solulab/.gradle/caches/transforms-2/files-2.1/9f7a3363a836eb7b5ebf34f9ce654da0/res/values-ko/values-ko.xml",
+                    "source": "/Users/faisal/.gradle/caches/transforms-2/files-2.1/f6559094cce65ea9996011efa030554b/res/values-ko/values-ko.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

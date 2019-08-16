@@ -3,8 +3,9 @@ package com.gtu;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.RNFetchBlob.RNFetchBlobPackage;
+import org.wonday.pdf.RCTPdfView;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
-import com.reactlibrary.RNPayTmPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.facebook.react.ReactNativeHost;
@@ -27,8 +28,9 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNFetchBlobPackage(),
+            new RCTPdfView(),
             new AsyncStoragePackage(),
-            new RNPayTmPackage(),
             new VectorIconsPackage(),
             new RNGestureHandlerPackage()
       );
