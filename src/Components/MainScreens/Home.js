@@ -8,7 +8,7 @@ import Header from '../header';
 class Home extends React.Component{
   render(){
     return(
-      <View style={{flex:1}}>
+      <View style={{flex:1, backgroundColor:"rgb(240,240,240)"}}>
          <Header navigation={this.props.navigation}/>
         <ScrollView style={{flexGrow:1, margin:'1%', marginBottom:'3%'}} showsVerticalScrollIndicator={false}>
             {/* <View style={{flex:3}}>

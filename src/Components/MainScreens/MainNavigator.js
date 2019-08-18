@@ -10,6 +10,7 @@ import Addmoney from './paytm';
 import AsyncStorage from '@react-native-community/async-storage';
 import MyPurchase from './myPurchase';
 import pdf from './pdf';
+import Loader from '../Loader';
 
 const MainNavigator = createStackNavigator({
   Home:Home,
@@ -38,6 +39,7 @@ const DrawerNavigator = createAppContainer(Drawer);
 
 
 const SNavigator = createSwitchNavigator({
+  Loader:Loader,
   Auth: Auth,
   MainNavigator:DrawerNavigator,
 })

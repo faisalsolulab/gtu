@@ -11,13 +11,13 @@ export default class DrawerMenu extends React.Component {
                     <Text style={styles.logoText}>Engineering <Text style={{color:'blue', fontSize:30, fontStyle:'italic'}}>Z</Text><Text style={{fontSize:25}}>one</Text></Text>	
                 </View>
                 <View style={{flex:9}}>
-               <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Home')}>
+               <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('Home')} style={{alignItems:'center'}}>
                    <View style={styles.titleStyle}>
                         <Icon name='home' size={20}/>
                         <Text style={{color:'black', marginLeft:'2%', fontSize:20}}>Home</Text>
                    </View>
                </TouchableWithoutFeedback>
-               <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('MyPurchase')}>
+               <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('MyPurchase')} style={{alignItems:'center', justifyContent:'center'}}>
                    <View style={styles.titleStyle}>
                         <Icon name='file-download' size={20} type={'material-community'}/>
                         <Text style={{color:'black', marginLeft:'2%', fontSize:20}}>My Purchases</Text>
@@ -25,8 +25,8 @@ export default class DrawerMenu extends React.Component {
                </TouchableWithoutFeedback>
                <TouchableWithoutFeedback onPress={() => {
                    AsyncStorage.removeItem('Login')
-                   this.props.navigation.navigate('Auth')
-                   }}>
+                   this.props.navigation.navigate('Loader')
+                   }} style={{alignItems:'center', justifyContent:'center'}}>
                    <View style={styles.titleStyle}>
                         <Icon name='logout' size={20} type={'material-community'}/>
                         <Text style={{color:'black', marginLeft:'2%', fontSize:20}}>Sign Out</Text>
@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
         flex:0.08,
         height:'6%',
         marginTop:'5%',
+        alignItems:'center',
         borderBottomWidth:0.3,
         flexDirection:'row'
     },

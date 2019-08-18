@@ -4,12 +4,14 @@ import Pdf from 'react-native-pdf';
 
 export class pdf extends Component {
   render() {
+    const URL = this.props.navigation.state.params.material
     return (
     <View style={{flex: 1}}>
       <Pdf ref={(pdf)=>{this.pdf = pdf;}}
-        source={{uri:'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf'}}
+        source={{uri:URL}}
         style={{flex: 1}}
-        onError={(error)=>{console.log(error);}} />
+        onError={(error)=>{console.log(error);}} 
+        />
     </View>
     )}
 }

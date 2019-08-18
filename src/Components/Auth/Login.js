@@ -12,7 +12,6 @@ import {
 } from 'react-native';
 import {connect} from 'react-redux';
 import {loginUser} from '../../Actions/';
-import AsyncStorage from '@react-native-community/async-storage';
 
 var token;
 
@@ -26,12 +25,6 @@ class Login extends Component {
     }
   }
 
-  componentWillMount = async () => {
-   await AsyncStorage.getItem('Login').then((value) => {
-    token = value
-    token == 'Login' ? this.props.navigation.navigate('MainNavigator') : null
-  })
-  }
 
   submit = () => {
     if(this.state.Email && this.state.Password){

@@ -29,7 +29,8 @@ class Addmoney extends Component{
     }
 
     submit = () => {
-        console.log('EMALA', email)
+        console.log('EMALA', email, this.state.tranId)
+        if(this.state.name && this.state.mobile && this.state.tranId && this.state.type){
         axios('http://codeingking.com/engineeringzone/api/order/addOrder',{
             method:'POST',
             data:{
@@ -52,6 +53,9 @@ class Addmoney extends Component{
                 }
             }
         )
+        }else {
+                Alert.alert('Enter all fields')
+        }
     }
     render(){
         console.log('PRPS', this.props)
@@ -59,9 +63,9 @@ class Addmoney extends Component{
         <View style={styles.container}>
             <Header routeName={'Paytm'}/>
             <View style={{flex: 1}}>
-                <Text style={{textAlign:'center', fontSize:15, fontWeight:'bold', margin:'2%'}}>Enter Details of Payment</Text>
+                <Text style={{textAlign:'center', fontSize:15, fontWeight:'bold', margin:'2%', color:"black"}}>Enter Details of Payment</Text>
                 <TextInput
-                    style={{height: 50, backgroundColor: '#EDEDED', color: 'black', marginLeft: 0, marginRight:0, marginTop: 20}}
+                    style={{height: 50, backgroundColor: 'white', color: 'black', marginLeft: 0, marginRight:0, marginTop: 20}}
                     value = {this.state.name}
                     onChangeText={(text) => this.setState({name: text})}
                     autoCorrect={false}
@@ -70,7 +74,7 @@ class Addmoney extends Component{
                     keyboardType="numeric"
                 />
                 <TextInput
-                    style={{height: 50, backgroundColor: '#EDEDED', color: 'black', marginLeft: 0, marginRight:0, marginTop: 20}}
+                    style={{height: 50, backgroundColor: 'white', color: 'black', marginLeft: 0, marginRight:0, marginTop: 20}}
                     value = {this.state.mobile}
                     onChangeText={(text) => this.setState({mobile: text})}
                     autoCorrect={false}
@@ -79,7 +83,7 @@ class Addmoney extends Component{
                     keyboardType="numeric"
                 />
                 <TextInput
-                    style={{height: 50, backgroundColor: '#EDEDED', color: 'black', marginLeft: 0, marginRight:0, marginTop: 20}}
+                    style={{height: 50, backgroundColor: 'white', color: 'black', marginLeft: 0, marginRight:0, marginTop: 20}}
                     value = {this.state.email}
                     onChangeText={(text) => this.setState({email: text})}
                     autoCorrect={false}
@@ -87,7 +91,7 @@ class Addmoney extends Component{
                     placeholderTextColor="#727278"
                 />
                 <TextInput
-                    style={{height: 50, backgroundColor: '#EDEDED', color: 'black', marginLeft: 0, marginRight:0, marginTop: 20}}
+                    style={{height: 50, backgroundColor: 'white', color: 'black', marginLeft: 0, marginRight:0, marginTop: 20}}
                     value = {this.state.tranId}
                     onChangeText={(text) => this.setState({tranId: text})}
                     autoCorrect={false}
@@ -95,7 +99,7 @@ class Addmoney extends Component{
                     placeholderTextColor="#727278"
                 />
                 <TextInput
-                    style={{height: 50, backgroundColor: '#EDEDED', color: 'black', marginLeft: 0, marginRight:0, marginTop: 20}}
+                    style={{height: 50, backgroundColor: 'white', color: 'black', marginLeft: 0, marginRight:0, marginTop: 20}}
                     value = {this.state.type}
                     onChangeText={(text) => this.setState({type: text})}
                     autoCorrect={false}
@@ -103,7 +107,7 @@ class Addmoney extends Component{
                     placeholderTextColor="#727278"
                 />
                 <TextInput
-                    style={{height: 50, backgroundColor: '#EDEDED', color: 'black', marginLeft: 0, marginRight:0, marginTop: 20}}
+                    style={{height: 50, backgroundColor: 'white', color: 'black', marginLeft: 0, marginRight:0, marginTop: 20}}
                     autoCorrect={false}
                     value = {this.props.navigation.state.params.price}
                     placeholderTextColor="#727278"
@@ -125,10 +129,11 @@ const styles = StyleSheet.create({
     flex: 1,
     width: null,
     height: null,
+    backgroundColor:'rgb(240,240,240)'
   },
   buttonContainer:{
     borderRadius: 5,
-    backgroundColor: "black",
+    backgroundColor: "rgb(0,0,120)",
     width: 200,
     height: 50,
     alignItems: 'center',

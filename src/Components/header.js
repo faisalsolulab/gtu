@@ -4,9 +4,8 @@ import {Icon} from 'react-native-elements';
 
 export default class Header extends React.Component{
   render(){
-    console.log('HEasre', this.props)
     return(
-     <View style={{height:'8%', borderBottomWidth:1, flexDirection:'row', alignItems:'center'}}>
+     <View style={{height:'8%', borderBottomWidth:1, flexDirection:'row', alignItems:'center', backgroundColor:'white'}}>
         <View style={{flexDirection:'row'}}>
           {this.props.routeName == 'Paytm' ? null :
           <Icon name='menu' containerStyle={{marginLeft:'2%'}} onPress={() => this.props.navigation.openDrawer()}/>}

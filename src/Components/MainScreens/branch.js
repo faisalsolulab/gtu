@@ -51,8 +51,8 @@ export default class Branch extends React.Component{
     )
                     }else{
                       return(
-                        <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-                          <ActivityIndicator style={{alignSelf:'center'}}/>
+                        <View style={{flex:1, marginTop:'50%'}}>
+                          <ActivityIndicator size='large' color='green'/>
                         </View>
                       )
                     }

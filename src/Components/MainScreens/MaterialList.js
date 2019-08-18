@@ -24,10 +24,9 @@ export default class MaterialList extends React.Component{
   }
 
   render(){
-    console.log('PROPS', this.props.navigation.state.params.branchId)
       if(this.state.materialData){
         return(
-      <View style={{flex:1}}>
+      <View style={{flex:1, backgroundColor:'rgb(240,240,240)'}}>
           <Header navigation={this.props.navigation}/>
         <View style={{flex:1, paddingBottom:'2%'}}>
           <FlatList
@@ -73,7 +72,7 @@ export default class MaterialList extends React.Component{
   } else{
     return(
       <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-        <ActivityIndicator style={{alignSelf:'center'}}/>
+        <ActivityIndicator size='large' style={{alignSelf:'center'}} color='green'/>
       </View>
     )
   }

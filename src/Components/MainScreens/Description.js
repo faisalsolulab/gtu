@@ -2,14 +2,16 @@ import React from 'react';
 import {Text, View, Image, TouchableOpacity, StyleSheet, ActivityIndicator} from 'react-native';
 import Header from '../header';
 import { ScrollView } from 'react-native-gesture-handler';
+import axios from 'axios';
 
 class Description extends React.Component{
+
   
   render(){
     console.log('PROPS', this.props.navigation.state.params)
     
     return(
-      <View style={{flex:1}}>
+      <View style={{flex:1, backgroundColor:'rgb(240,240,240)'}}>
         <Header navigation={this.props.navigation}/>
         <View style={{flex:1}}>
             <Image source={{uri:this.props.navigation.state.params.image}} style={styles.coverImage} resizeMode='cover'/>
@@ -24,7 +26,7 @@ class Description extends React.Component{
               </ScrollView>
               <View style={styles.bottomTab}>
                 <Text style={{color:'white', fontSize:20, marginLeft:'5%'}}>Price: ₹{this.props.navigation.state.params.price}</Text>
-                <TouchableOpacity style={{marginLeft:'40%'}} onPress={() => this.props.navigation.navigate('paytm', { 
+                <TouchableOpacity style={{marginLeft:'auto', marginRight:'5%'}} onPress={() => this.props.navigation.navigate('paytm', { 
                   price : this.props.navigation.state.params.price,
                   bookId: this.props.navigation.state.params.bookId})}>
                 <Text style={{color:'white', fontSize:20, }}>Buy Now</Text>
@@ -45,8 +47,9 @@ const styles = StyleSheet.create({
   bottomTab:{
     height:'10%',
     width:'100%',
-    backgroundColor:'blue',
+    backgroundColor:'rgb(0,0,120)',
     flexDirection:'row',
+    justifyContent:'space-between',
     alignItems:'center'
   }
 })
